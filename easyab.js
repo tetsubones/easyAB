@@ -210,7 +210,7 @@
    */
   function _track(options) {
     // checks if the GA variable has been initialised
-    if (typeof window['_gaq'] !== 'undefined') {
+    if (typeof window['ga'] !== 'undefined') {
       var value = '',
           slot = options['slot'];
       if (_bucket !== 0) {
