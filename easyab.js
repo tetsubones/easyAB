@@ -179,15 +179,16 @@
    * @private
    */
   function _trackEvent(category, action, options) {
-    var label = options['event-label'] || undefined,
-        value = options['event-value'] || undefined,
-        noninteraction = ['event-noninteraction'] || true;
-    window['_gaq'].push(['_trackEvent',
+    var label = options['event-label'] || undefined
+        ,value = options['event-value'] || undefined
+//        ,noninteraction = options['event-noninteraction'] || {'nonInteraction' : 1};
+    window['ga'](['send',
+        'event',
         category,
         action,
         label,
-        value,
-        noninteraction
+        value
+//        ,noninteraction
       ]);
   }
 
