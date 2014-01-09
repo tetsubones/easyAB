@@ -252,9 +252,14 @@
       if (_name && options['alternatives']) {
           _dev = _DEV_REGEX.test(window.location);
           _bucket = _getBucket(options['alternatives'].length + 1);
+//パターン数を見て、乱数を生成する
+_log('_bucket : ' + _bucket);
           if (_bucket !== 0) {
             _alternative = options['alternatives'][_bucket - 1];
           }
+//デフォルトパターンじゃなければ、変更パターンを追加する
+_log('_alternative : ' + _alternative);
+_log(options);
           _track(options);
       }
       return this.each(function() {
