@@ -160,12 +160,12 @@
    */
   function _trackCustomVar(slot, name, value, options) {
     var scope = options['scope'] || 3;
-    window['_gaq'].push(['_setCustomVar',
-        slot,
-        name,
-        value,
-        scope
-      ]);
+    //nameÇÕïsóv
+    //scopeÇÕanalyticsÇÃä«óùâÊñ Ç≈çsÇ§
+    window['ga']('send',
+        'dimension' + slot,
+         value
+      );
   }
 
   /**
@@ -182,14 +182,14 @@
     var label = options['event-label'] || undefined
         ,value = options['event-value'] || undefined
 //        ,noninteraction = options['event-noninteraction'] || {'nonInteraction' : 1};
-    window['ga'](['send',
+    window['ga']('send',
         'event',
         category,
         action,
         label,
         value
 //        ,noninteraction
-      ]);
+      );
   }
 
   /**
