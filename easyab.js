@@ -177,8 +177,10 @@ _log("_trackCustomVar options : " + options);
 //       'dimension' + slot,
 //         value
 //      );
+
 _log("dimension : " + 'dimension' + slot);
 _log("value : " + value);
+
      window['ga']('set', 'dimension' + slot , value);
      window['ga']('send', 'pageview');
   }
