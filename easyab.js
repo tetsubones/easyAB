@@ -57,7 +57,7 @@
    * @private
    * @const
    */
-  var _COOKIE_NAME = '_easyab_seed';
+  var _COOKIE_NAME = '_easyab_seed_';
 
   /**
    * Uses the seed and the number of buckets to choose
@@ -93,10 +93,10 @@ _log("seed % buckets : " + seed % buckets);
    * @private
    */
   function _makeSeed() {
-    var seed = _readCookie(_COOKIE_NAME);
+    var seed = _readCookie(_COOKIE_NAME + _name);
     if (!seed) {
       seed = Math.random() * 999;
-      _setCookie(_COOKIE_NAME, seed, 30);
+      _setCookie(_COOKIE_NAME + _name, seed, 30);
     }
     return seed;
   }
