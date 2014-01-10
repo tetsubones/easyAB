@@ -80,6 +80,9 @@
       seed = Math.random() * 999;
     }
     // returns the bucket number
+_log("seed  : " + seed);
+_log(" buckets : " + buckets);
+_log("seed % buckets : " + seed % buckets);
     return Math.floor(seed % buckets);
   }
 
@@ -138,8 +141,11 @@
    * @private
    */
   function _display($obj) {
+_log("display ------------------------");
+_log(_alternative);
     if (_alternative['alternative']) {
       var alternative = _alternative['alternative'];
+_log(typeof alternative);
       if (typeof alternative === 'string') {
         // display the text alternative
         $obj.text(alternative);
@@ -162,7 +168,12 @@
     var scope = options['scope'] || 3;
     //nameは不要
     //scopeはanalyticsの管理画面で行う
-    window['ga']('send',
+_log("_trackCustomVar slot : " + slot);
+_log("_trackCustomVar _name : " + _name);
+_log("_trackCustomVar value : " + value);
+_log("_trackCustomVar options : " + options);
+
+    window['ga']('set',
         'dimension' + slot,
          value
       );
@@ -198,10 +209,10 @@
    * @private
    */
   function _log(msg) {
-    if (typeof window['console'] !== 'undefined'
-      && typeof msg === 'string') {
+//    if (typeof window['console'] !== 'undefined'
+//      && typeof msg === 'string') {
       return window['console']['log'](msg);
-    }
+//    }
   }
 
   /**
@@ -214,6 +225,7 @@
     if (typeof window['ga'] !== 'undefined') {
       var value = '',
           slot = options['slot'];
+//デフォルト以外場合
       if (_bucket !== 0) {
         // alternative
         value = _alternative['value'] || 'alternative' + _bucket;
@@ -221,6 +233,8 @@
         // default
         value = options['default-value'] || 'default';
       }
+_log("value : " + value);
+//デバッグモードの場合はログ表示のみtrackingしない
       if (_dev) {
         // dev mode: only logs the information about the events or custom vars
         if (slot) {
@@ -233,6 +247,8 @@
         _trackCustomVar(slot, _name, value, options);
       } else {
         // tracks an event
+_log("_trackEvent _name : " + _name);
+_log("_trackEvent : " + value);
        _trackEvent(_name, value, options);
       }
     }
@@ -258,7 +274,7 @@ _log('_bucket : ' + _bucket);
             _alternative = options['alternatives'][_bucket - 1];
           }
 //デフォルトパターンじゃなければ、変更パターンを追加する
-_log('_alternative : ' + _alternative);
+_log(_alternative);
 _log(options);
           _track(options);
       }

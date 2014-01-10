@@ -4,12 +4,32 @@ $(function(){
     'slot': 2,
     'name': 'gs-purchase-button',
     'alternatives': [{
-      'alternative':
+      'alternative'://’l‚Í‰½‚Å‚àOK
         function($this) {
           $this
-            .text('btn-success');
+            .text('btn-success1');
+        }
+    },
+    {
+      'alternative'://’l‚Í‰½‚Å‚àOK
+        function($this) {
+          $this
+            .text('btn-success2');
         }
     }]
   });
+
+  $('#purchase-button2').easyab({
+    'name': 'button-click',
+    'event-label' : 'btnlabel',
+    'event-value' : 'tes',
+    'alternatives': [{
+      'alternative'://’l‚Í‰½‚Å‚àOK
+        function($this) {
+          $this.text('btn-A');
+        }
+    }]
+  });
+
 })
 })(jQuery)
