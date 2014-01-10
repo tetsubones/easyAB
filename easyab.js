@@ -71,6 +71,7 @@
     if (!_dev) {
       // prod mode: gets the existing seed if exists or
       // creates a new seed
+_log('_seed' + _seed);
       if (!_seed) {
         _seed = _makeSeed();
       }
@@ -80,9 +81,6 @@
       seed = Math.random() * 999;
     }
     // returns the bucket number
-_log("seed  : " + seed);
-_log(" buckets : " + buckets);
-_log("seed % buckets : " + seed % buckets);
     return Math.floor(seed % buckets);
   }
 
@@ -93,6 +91,7 @@ _log("seed % buckets : " + seed % buckets);
    * @private
    */
   function _makeSeed() {
+_log('cookie' + _COOKIE_NAME + _name);
     var seed = _readCookie(_COOKIE_NAME + _name);
     if (!seed) {
       seed = Math.random() * 999;
