@@ -2,34 +2,26 @@
 $(function(){
   $('#purchase-button').easyab({
     'slot': 2,
-    'name': 'gs-purchase-button',
-    'alternatives': [{
-      'alternative'://’l‚Í‰½‚Å‚àOK
+    'name': 'button-test',
+    'alternatives': [
+    {
+     'alternative':
         function($this) {
           $this
             .text('btn-success1');
         }
     },
     {
-      'alternative'://’l‚Í‰½‚Å‚àOK
+     'alternative':
         function($this) {
           $this
             .text('btn-success2');
         }
     }]
+  })
+  
+  $('#purchase-button').click(function(){
+    ga('send', 'event', 'category', 'action','label','value');
   });
-/*
-  $('#purchase-button2').easyab({
-    'name': 'button-click',
-    'event-label' : 'btnlabel',
-    'event-value' : 'tes',
-    'alternatives': [{
-      'alternative'://’l‚Í‰½‚Å‚àOK
-        function($this) {
-          $this.text('btn-A');
-        }
-    }]
-  });
-*/
 })
 })(jQuery)

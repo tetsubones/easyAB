@@ -166,7 +166,6 @@ _log(typeof alternative);
    */
   function _trackCustomVar(slot, name, value, options) {
     var scope = options['scope'] || 3;
-    //nameÇÕïsóv
     //scopeÇÕanalyticsÇÃä«óùâÊñ Ç≈çsÇ§
 _log("_trackCustomVar slot : " + slot);
 _log("_trackCustomVar _name : " + _name);
@@ -179,9 +178,9 @@ _log("_trackCustomVar options : " + options);
 //      );
 
 _log("dimension : " + 'dimension' + slot);
-_log("value : " + value);
+_log("value : " + _name + _bucket);
 
-     window['ga']('set', 'dimension' + slot , value);
+     window['ga']('set', 'dimension' + slot , _name + _bucket);
      window['ga']('send', 'pageview');
   }
 
