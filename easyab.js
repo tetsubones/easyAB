@@ -160,12 +160,10 @@
    */
   function _trackCustomVar(slot, name, value, options) {
     var scope = options['scope'] || 3;
-    //name‚Í•s—v
-    //scope‚Íanalytics‚ÌŠÇ—‰æ–Ê‚Ås‚¤
-    window['ga']('send',
-        'dimension' + slot,
-         value
-      );
+
+
+     window['ga']('set', 'dimension' + slot , value);
+     window['ga']('send', 'pageview');
   }
 
   /**
