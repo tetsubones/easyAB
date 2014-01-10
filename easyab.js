@@ -173,10 +173,14 @@ _log("_trackCustomVar _name : " + _name);
 _log("_trackCustomVar value : " + value);
 _log("_trackCustomVar options : " + options);
 
-    window['ga']('set',
-        'dimension' + slot,
-         value
-      );
+//    window['ga'('set',
+//       'dimension' + slot,
+//         value
+//      );
+_log("dimension : " + 'dimension' + slot);
+_log("value : " + value);
+     window['ga']('set', 'dimension' + slot , value);
+     window['ga']('send', 'pageview');
   }
 
   /**

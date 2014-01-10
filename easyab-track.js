@@ -18,7 +18,7 @@ $(function(){
         }
     }]
   });
-
+/*
   $('#purchase-button2').easyab({
     'name': 'button-click',
     'event-label' : 'btnlabel',
@@ -30,6 +30,6 @@ $(function(){
         }
     }]
   });
-
+*/
 })
 })(jQuery)
