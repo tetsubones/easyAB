@@ -10,6 +10,13 @@
 
 
   /**
+   * easyAB plugin definition.
+   * @param {Object} options The options.
+   */
+  $.fn.easyab = function(options) {
+
+
+  /**
    * The seed used to select the bucket.
    * @type {number}
    * @private
@@ -258,13 +265,6 @@ _log("_trackEvent : " + value);
       }
     }
   }
-
-
-  /**
-   * easyAB plugin definition.
-   * @param {Object} options The options.
-   */
-  $.fn.easyab = function(options) {
 
 
     if (!options
