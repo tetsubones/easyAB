@@ -3,7 +3,8 @@ $(function(){
 //テスト1
   $('#purchase-button').easyab({
     'slot': 2,
-    'name': 'button-test',
+    'name': 'top-test',
+    'pageview' : true,
     'alternatives': [
     {
      'alternative':
@@ -22,25 +23,7 @@ $(function(){
   });
   
   $('#purchase-button').click(function(){
-    ga('send', 'event', 'category', 'action','label','value');
-  });
-
-//テスト2
-  $('#purchase-button2').easyab({
-    'slot': 2,
-    'name': 'p130109_66v',
-    'alternatives': [
-    {
-     'alternative':
-        function($this) {
-          $this
-            .text('momomomo1');
-        }
-    }]
-  });
-  
-  $('#purchase-button2').click(function(){
-    ga('send', 'event', 'category', 'action','label','value');
+    ga('send', 'event', 'category', 'action', {'nonInteraction': 1});
   });
 
 
