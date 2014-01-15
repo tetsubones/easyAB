@@ -23,7 +23,8 @@ $(function(){
   });
   
   $('#purchase-button').click(function(){
-    ga('send', 'event', 'category', 'action', {'nonInteraction': 1});
+//    ga('send', 'event', 'category', 'action', {'nonInteraction': 1});
+    ga('send', 'event', 'category2', 'action2','label2','value2');
   });
 
 
