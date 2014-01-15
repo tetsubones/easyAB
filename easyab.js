@@ -221,10 +221,10 @@ _log("dimensionの値 : " + _name + _bucket);
    * @private
    */
   function _log(msg) {
-//    if (typeof window['console'] !== 'undefined'
-//      && typeof msg === 'string') {
+    if (typeof window['console'] !== 'undefined'
+      && typeof msg === 'string') {
       return window['console']['log'](msg);
-//    }
+    }
   }
 
   /**
@@ -266,6 +266,7 @@ _log("dimensionの値 : " + _name + _bucket);
 
 
     if (!options
+        || this.length === 0
         || typeof options !== 'object'
         || !navigator.cookieEnabled) {
       return this;
