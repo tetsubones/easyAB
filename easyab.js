@@ -201,19 +201,19 @@ _log("dimensionの値 : " + _name + _bucket);
    * @param {Object} options Additional options.
    * @private
    */
-  function _trackEvent(category, action, options) {
-    var label = options['event-label'] || undefined
-        ,value = options['event-value'] || undefined
+//  function _trackEvent(category, action, options) {
+//    var label = options['event-label'] || undefined
+//        ,value = options['event-value'] || undefined
 //        ,noninteraction = options['event-noninteraction'] || {'nonInteraction' : 1};
-    window['ga']('send',
-        'event',
-        category,
-        action,
-        label,
-        value
+//    window['ga']('send',
+//        'event',
+//        category,
+//        action,
+//        label,
+//        value
 //        ,noninteraction
-      );
-  }
+//      );
+//  }
 
   /**
    * Logs a message.
@@ -259,9 +259,7 @@ _log("dimensionの値 : " + _name + _bucket);
         _trackCustomVar(slot, _name, value, options);
       } else {
         // tracks an event
-_log("_trackEvent _name : " + _name);
-_log("_trackEvent : " + value);
-       _trackEvent(_name, value, options);
+//       _trackEvent(_name, value, options);
       }
     }
   }
