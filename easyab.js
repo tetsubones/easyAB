@@ -8,6 +8,7 @@
  */
 (function($) {
 
+
   /**
    * The seed used to select the bucket.
    * @type {number}
@@ -71,7 +72,7 @@
     if (!_dev) {
       // prod mode: gets the existing seed if exists or
       // creates a new seed
-_log('_seed' + _seed);
+_log('_seedã®å®šç¾©æœ‰ç„¡ : ' + _seed);
       if (!_seed) {
         _seed = _makeSeed();
       }
@@ -91,7 +92,7 @@ _log('_seed' + _seed);
    * @private
    */
   function _makeSeed() {
-_log('cookie' + _COOKIE_NAME + _name);
+_log('cookieã®åç§° : ' + _COOKIE_NAME + _name);
     var seed = _readCookie(_COOKIE_NAME + _name);
     if (!seed) {
       seed = Math.random() * 999;
@@ -140,7 +141,7 @@ _log('cookie' + _COOKIE_NAME + _name);
    * @private
    */
   function _display($obj) {
-_log("display ------------------------");
+_log("ç”»é¢è¡¨ç¤ºã®é–¢æ•° ------------------------");
 _log(_alternative);
     if (_alternative['alternative']) {
       var alternative = _alternative['alternative'];
@@ -165,19 +166,19 @@ _log(typeof alternative);
    */
   function _trackCustomVar(slot, name, value, options) {
     var scope = options['scope'] || 3;
-    //scope‚Íanalytics‚ÌŠÇ—‰æ–Ê‚Ås‚¤
-_log("_trackCustomVar slot : " + slot);
-_log("_trackCustomVar _name : " + _name);
-_log("_trackCustomVar value : " + value);
-_log("_trackCustomVar options : " + options);
+    //scopeã¯analyticsã®ç®¡ç†ç”»é¢ã§è¡Œã†
+//_log("_trackCustomVar slot : " + slot);
+//_log("_trackCustomVar _name : " + _name);
+//_log("_trackCustomVar value : " + value);
+//_log("_trackCustomVar options : " + options);
 
 //    window['ga'('set',
 //       'dimension' + slot,
 //         value
 //      );
 
-_log("dimension : " + 'dimension' + slot);
-_log("value : " + _name + _bucket);
+_log("dimensionã®ç•ªå· : " + 'dimension' + slot);
+_log("dimensionã®å€¤ : " + _name + _bucket);
 
      window['ga']('set', 'dimension' + slot , _name + _bucket);
      window['ga']('send', 'pageview');
@@ -229,7 +230,7 @@ _log("value : " + _name + _bucket);
     if (typeof window['ga'] !== 'undefined') {
       var value = '',
           slot = options['slot'];
-//ƒfƒtƒHƒ‹ƒgˆÈŠOê‡
+//ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆä»¥å¤–å ´åˆ
       if (_bucket !== 0) {
         // alternative
         value = _alternative['value'] || 'alternative' + _bucket;
@@ -237,8 +238,8 @@ _log("value : " + _name + _bucket);
         // default
         value = options['default-value'] || 'default';
       }
-_log("value : " + value);
-//ƒfƒoƒbƒOƒ‚[ƒh‚Ìê‡‚ÍƒƒO•\¦‚Ì‚İtracking‚µ‚È‚¢
+//_log("value : " + value);
+//ãƒ‡ãƒãƒƒã‚°ãƒ¢ãƒ¼ãƒ‰ã®å ´åˆã¯ãƒ­ã‚°è¡¨ç¤ºã®ã¿trackingã—ãªã„
       if (_dev) {
         // dev mode: only logs the information about the events or custom vars
         if (slot) {
@@ -258,11 +259,14 @@ _log("_trackEvent : " + value);
     }
   }
 
+
   /**
    * easyAB plugin definition.
    * @param {Object} options The options.
    */
   $.fn.easyab = function(options) {
+
+
     if (!options
         || typeof options !== 'object'
         || !navigator.cookieEnabled) {
@@ -272,14 +276,14 @@ _log("_trackEvent : " + value);
       if (_name && options['alternatives']) {
           _dev = _DEV_REGEX.test(window.location);
           _bucket = _getBucket(options['alternatives'].length + 1);
-//ƒpƒ^[ƒ“”‚ğŒ©‚ÄA—”‚ğ¶¬‚·‚é
-_log('_bucket : ' + _bucket);
+//ãƒ‘ã‚¿ãƒ¼ãƒ³æ•°ã‚’è¦‹ã¦ã€ä¹±æ•°ã‚’ç”Ÿæˆã™ã‚‹
+_log('ãƒ†ã‚¹ãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³ã®ç•ªå·ï¼ˆï¼‰ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯0 : ' + _bucket);
           if (_bucket !== 0) {
             _alternative = options['alternatives'][_bucket - 1];
           }
-//ƒfƒtƒHƒ‹ƒgƒpƒ^[ƒ“‚¶‚á‚È‚¯‚ê‚ÎA•ÏXƒpƒ^[ƒ“‚ğ’Ç‰Á‚·‚é
-_log(_alternative);
-_log(options);
+//ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ‘ã‚¿ãƒ¼ãƒ³ã˜ã‚ƒãªã‘ã‚Œã°ã€å¤‰æ›´ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’è¿½åŠ ã™ã‚‹
+//_log(_alternative);
+//_log(options);
           _track(options);
       }
       return this.each(function() {
