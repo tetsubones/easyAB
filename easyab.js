@@ -65,7 +65,7 @@
    * @private
    * @const
    */
-  var _COOKIE_NAME = '_easyab_seed_';
+  var _COOKIE_NAME = 'tumap_';
 
   /**
    * Uses the seed and the number of buckets to choose
