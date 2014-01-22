@@ -274,12 +274,12 @@ _log("dimensionの値 : " + _name + _bucket);
       _name = options['name'];
       if (_name && options['alternatives']) {
           _dev = _DEV_REGEX.test(window.location);
-          _bucket = _getBucket(options['alternatives'].length + 1);
+          _bucket = _getBucket(options['alternatives'].length);
 //パターン数を見て、乱数を生成する
 _log('テストパターンの番号（）デフォルトは0 : ' + _bucket);
-          if (_bucket !== 0) {
-            _alternative = options['alternatives'][_bucket - 1];
-          }
+//          if (_bucket !== 0) {
+            _alternative = options['alternatives'][_bucket];
+//          }
 //デフォルトパターンじゃなければ、変更パターンを追加する
 //_log(_alternative);
 //_log(options);
@@ -287,9 +287,9 @@ _log('テストパターンの番号（）デフォルトは0 : ' + _bucket);
       }
       return this.each(function() {
         var $this = $(this);
-        if (_bucket !== 0) {
+//        if (_bucket !== 0) {
           _display($this);
-        }
+//        }
       });
     }
   };
