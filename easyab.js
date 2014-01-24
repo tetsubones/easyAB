@@ -8,6 +8,14 @@
  */
 (function($) {
 
+
+  /**
+   * easyAB plugin definition.
+   * @param {Object} options The options.
+   */
+  $.fn.easyab = function(options) {
+
+
   /**
    * The seed used to select the bucket.
    * @type {number}
@@ -57,7 +65,7 @@
    * @private
    * @const
    */
-  var _COOKIE_NAME = '_easyab_seed';
+  var _COOKIE_NAME = 'tumap_';
 
   /**
    * Uses the seed and the number of buckets to choose
@@ -90,10 +98,10 @@
    * @private
    */
   function _makeSeed() {
-    var seed = _readCookie(_COOKIE_NAME);
+    var seed = _readCookie(_COOKIE_NAME + _name);
     if (!seed) {
       seed = Math.random() * 999;
-      _setCookie(_COOKIE_NAME, seed, 30);
+      _setCookie(_COOKIE_NAME + _name, seed, 30);
     }
     return seed;
   }
@@ -162,7 +170,7 @@
     var scope = options['scope'] || 3;
 
 
-     window['ga']('set', 'dimension' + slot , value);
+     window['ga']('set', 'dimension' + slot , _name + _bucket);
      window['ga']('send', 'pageview');
   }
 
@@ -176,19 +184,19 @@
    * @param {Object} options Additional options.
    * @private
    */
-  function _trackEvent(category, action, options) {
-    var label = options['event-label'] || undefined
-        ,value = options['event-value'] || undefined
+//  function _trackEvent(category, action, options) {
+//    var label = options['event-label'] || undefined
+//        ,value = options['event-value'] || undefined
 //        ,noninteraction = options['event-noninteraction'] || {'nonInteraction' : 1};
-    window['ga']('send',
-        'event',
-        category,
-        action,
-        label,
-        value
+//    window['ga']('send',
+//        'event',
+//        category,
+//        action,
+//        label,
+//        value
 //        ,noninteraction
-      );
-  }
+//      );
+//  }
 
   /**
    * Logs a message.
@@ -231,17 +239,14 @@
         _trackCustomVar(slot, _name, value, options);
       } else {
         // tracks an event
-       _trackEvent(_name, value, options);
+//       _trackEvent(_name, value, options);
       }
     }
   }
 
-  /**
-   * easyAB plugin definition.
-   * @param {Object} options The options.
-   */
-  $.fn.easyab = function(options) {
+
     if (!options
+        || this.length === 0
         || typeof options !== 'object'
         || !navigator.cookieEnabled) {
       return this;
@@ -249,17 +254,18 @@
       _name = options['name'];
       if (_name && options['alternatives']) {
           _dev = _DEV_REGEX.test(window.location);
-          _bucket = _getBucket(options['alternatives'].length + 1);
-          if (_bucket !== 0) {
-            _alternative = options['alternatives'][_bucket - 1];
-          }
+          _bucket = _getBucket(options['alternatives'].length);
+//          if (_bucket !== 0) {
+            _alternative = options['alternatives'][_bucket];
+//          }
+
           _track(options);
       }
       return this.each(function() {
         var $this = $(this);
-        if (_bucket !== 0) {
+//        if (_bucket !== 0) {
           _display($this);
-        }
+//        }
       });
     }
   };
